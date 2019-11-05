@@ -1,0 +1,29 @@
+language: cpp
+os: linux
+
+.build_fifteen: &build_fifteen
+    script:
+    - mkdir .build
+    - cd .build
+    - cmake ..
+    - make
+
+.run_unit_tests: &run_unit_tests
+    script:
+    - echo "Unit tests are not implemented"
+
+jobs:
+    include:
+    - stage : "Build"
+      <<: *build_fifteen
+
+    - stage : "Test"
+      <<: *run_unit_tests
+
+addons:
+  apt:
+    sources:
+      - george-edison55-precise-backports
+    packages:
+      - cmake-data
+      - cmake
