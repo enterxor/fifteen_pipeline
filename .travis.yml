@@ -1,0 +1,17 @@
+sudo: required
+language: cpp
+os: linux
+
+addons:
+  apt:
+    sources:
+      - george-edison55-precise-backports
+    packages:
+      - cmake-data
+      - cmake
+
+script:
+    - mkdir .build
+    - cd .build
+    - cmake ..
+    - make
