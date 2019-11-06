@@ -1,5 +1,4 @@
-# fifteen_pipeline
-[![Build Status](https://travis-ci.org/enterxor/fifteen_pipeline.svg?branch=master)](https://travis-ci.org/enterxor/fifteen_pipeline)
+# fifteen_pipeline [![Build Status](https://travis-ci.org/enterxor/fifteen_pipeline.svg?branch=master)](https://travis-ci.org/enterxor/fifteen_pipeline)
 
 This is the sample repo, where i will consequently build environment for c++ project
 
