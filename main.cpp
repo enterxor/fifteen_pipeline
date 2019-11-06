@@ -1,5 +1,4 @@
 #include <cstdint>
-#include <iostream>
 #include <array>
 #include <algorithm>
 #include <numeric>
@@ -9,6 +8,9 @@
 #include <map>
 #include <set>
 #include <memory>
+
+#include <fmt/format.h>
+
 constexpr const uint8_t SideSize = 4;
 using sample = std::array<uint8_t, SideSize*SideSize>;
 
@@ -27,9 +29,9 @@ sample get_random_sample(){
 void print_sample(const sample& _sample){
     for(size_t row = 0;row < SideSize; row++ ){
         for(size_t col = 0; col < SideSize; col++){
-	    std::cout << static_cast<unsigned>(_sample[col + SideSize*row]) << " ";
+	    fmt::print("{:2} ",static_cast<unsigned>(_sample[col + SideSize*row]) );
 	}
-	std::cout << std::endl;
+	fmt::print("\n");
     }
 }
 
@@ -127,21 +129,14 @@ std::list<sample> get_solving(const sample& seed){
 
             }
         }
-
-        
-
     }
 
     return {};
-        
 }
 
 int main(int argc, char** argv) {
-    std::cout << "Hello word" << std::endl;
     auto seed = get_random_sample();
     print_sample(seed);
-    std::cout << std::endl;
-
     
     auto sa = sample { 1,2,0,3,
                        4,5,6,7,
@@ -152,9 +147,9 @@ int main(int argc, char** argv) {
     auto solve = get_solving(seed);
     for(auto& ent : solve){
         print_sample(ent);
-        std::cout << "Heuristic is " << get_heuristic(ent) << std::endl;
+        fmt::print( "Heuristic is {} \n", get_heuristic(ent) );
     }
-    std::cout<< "Solved for "<< solve.size() << " steps";
+    fmt::print("Solved for {} steps.\n", solve.size() );
     return 0;
 }
 
