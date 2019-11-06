@@ -18,5 +18,5 @@ The project will use next utilities:
 
 ## Used links
 * [CMake](https://cliutils.gitlab.io/modern-cmake/)
-* [Conan](https://habr.com/ru/post/342982/)
+* [Hunter](https://docs.hunter.sh/en/latest/)
 * [Travis](https://docs.travis-ci.com/user/for-beginners/)
