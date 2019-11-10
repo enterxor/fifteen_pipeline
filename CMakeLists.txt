@@ -9,16 +9,21 @@ HunterGate(
 
 project(fifteen)
 
-hunter_add_package(fmt)
-
 set (CMAKE_CXX_STANDARD 11)
 
+hunter_add_package(fmt)
+
 find_package(fmt CONFIG REQUIRED)
+
+set(FIFTEEN_SOLVING_LIB_SRC
+    src/fifteen_solve.cpp
+    src/fifteen_solve.h)
+
+add_library(${CMAKE_PROJECT_NAME}_lib STATIC ${FIFTEEN_SOLVING_LIB_SRC})
 
 set(FIFTEEN_SRC main.cpp)
 
 add_executable(${CMAKE_PROJECT_NAME} ${FIFTEEN_SRC})
 
-set_property(TARGET fifteen PROPERTY CXX_STANDARD 11)
+target_link_libraries(fifteen fmt ${CMAKE_PROJECT_NAME}_lib)
 
-target_link_libraries(fifteen fmt)
