@@ -12,13 +12,25 @@ os: linux
     script:
     - echo "Unit tests are not implemented"
 
+.run_linter : &run_linter
+    script:
+    - find . -iname *.h -o -iname *.c -o -iname *.cpp -o -iname *.hpp  | xargs clang-format -style=file -i -fallback-style=none
+    - git diff > clang_format.patch
+    - if [ -s clang_format.patch ]; then rm clang_format.patch; exit 1; fi
+    - exit 0
 jobs:
     include:
     - stage : "Build"
       <<: *build_fifteen
 
     - stage : "Test"
+      name  : "Unit tests"
       <<: *run_unit_tests
+
+
+    - stage : "Test"
+      name : "Linter"
+      <<: *run_linter
 
 addons:
   apt:
@@ -27,3 +39,4 @@ addons:
     packages:
       - cmake-data
       - cmake
+      - clang-format
