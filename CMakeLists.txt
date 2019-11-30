@@ -11,9 +11,12 @@ project(fifteen)
 
 set (CMAKE_CXX_STANDARD 11)
 
-hunter_add_package(fmt)
+option(BUILD_TESTING "on")
 
+hunter_add_package(fmt)
 find_package(fmt CONFIG REQUIRED)
+
+include_directories($CMAKE_CURRENT_SOURCE_DIR)
 
 set(FIFTEEN_SOLVING_LIB_SRC
     src/fifteen_solve.cpp
@@ -26,4 +29,9 @@ set(FIFTEEN_SRC main.cpp)
 add_executable(${CMAKE_PROJECT_NAME} ${FIFTEEN_SRC})
 
 target_link_libraries(fifteen fmt ${CMAKE_PROJECT_NAME}_lib)
+
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
+    enable_testing()
+    add_subdirectory(test)
+endif()
 
