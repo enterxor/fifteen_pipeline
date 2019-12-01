@@ -10,7 +10,11 @@ os: linux
 
 .run_unit_tests: &run_unit_tests
     script:
-    - echo "Unit tests are not implemented"
+    - mkdir .build
+    - cd .build
+    - cmake -DBUILD_TESTING=on ..
+    - make
+    - make test
 
 .run_linter : &run_linter
     script:

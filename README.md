@@ -7,7 +7,7 @@ I will use a simple program that solving a game "15 puzzle" to develop full pipl
 The project will use next utilities:
 - [x] C++ program code itself, compiling with gcc, using C++14
 - [x] Cmake as build system
-- [ ] GTest for unit testing
+- [x] GTest for unit testing
 - [x] Clang-format using to lint the code
 - [ ] Cpp-check as static analyser
 - [ ] Doxygen as API documentation engine, Sphinx or GitPages as user documentation engine
